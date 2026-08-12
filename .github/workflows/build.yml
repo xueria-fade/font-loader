@@ -1,0 +1,40 @@
+name: Build
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v6
+
+      - name: setup java
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: validate gradle wrapper
+        uses: gradle/actions/wrapper-validation@v6
+
+      - name: setup gradle
+        uses: gradle/actions/setup-gradle@v6
+
+      - name: setup mite
+        uses: Xueria/setup-mite@v1
+        with:
+          download-url: https://maven.limingzxc.top/repository/maven-releases/com/mojang/minecraft/1.6.4-MITE/minecraft-1.6.4-MITE.jar
+          mite-version: 1.6.4-MITE
+
+      - name: make gradlew executable
+        run: chmod +x gradlew
+
+      - name: build
+        run: ./gradlew build
+
+      - name: upload artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: Artifact
+          path: build/libs/
+
