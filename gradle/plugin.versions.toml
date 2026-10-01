@@ -1,6 +1,0 @@
-[versions]
-okhttp = "4.12.0"
-
-[libraries]
-okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
-

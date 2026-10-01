@@ -20,12 +20,6 @@ jobs:
       - name: setup gradle
         uses: gradle/actions/setup-gradle@v6
 
-      - name: setup mite
-        uses: Xueria/setup-mite@v1
-        with:
-          download-url: https://maven.limingzxc.top/repository/maven-releases/com/mojang/minecraft/1.6.4-MITE/minecraft-1.6.4-MITE.jar
-          mite-version: 1.6.4-MITE
-
       - name: make gradlew executable
         run: chmod +x gradlew
 

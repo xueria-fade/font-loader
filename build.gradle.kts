@@ -3,8 +3,8 @@ val modName = providers.gradleProperty("modName").get()
 val modVersion = providers.gradleProperty("modVersion").get()
 
 plugins {
-    `setup-mite` // download mite
     alias(libs.plugins.fish.loom)
+    alias(libs.plugins.setup.mite)
 }
 
 version = modVersion
