@@ -5,6 +5,7 @@ val modVersion = providers.gradleProperty("modVersion").get()
 plugins {
     alias(libs.plugins.fish.loom)
     alias(libs.plugins.setup.mite)
+    alias(libs.plugins.kotlin.jvm)
 }
 
 version = modVersion
@@ -16,6 +17,7 @@ base {
 repositories {
     mavenCentral()
     maven("https://maven.limingzxc.top/repository/maven-public/")
+    maven("https://central.sonatype.com/repository/maven-snapshots")
 }
 
 val loader = configurations.create("loader") {
@@ -27,6 +29,10 @@ dependencies {
 
     // Add fish mod loader dependency
     "loader"("com.github.MinecraftIsTooEasy:FishModLoader:3.4.2")
+
+    implementation("io.github.xueria:fabric-language-kotlin:1.14.1+kotlin.2.4.20-SNAPSHOT")
+
+    implementation(libs.kotlin.test)
 }
 
 loom {
@@ -55,8 +61,6 @@ tasks.processResources {
     rename("fabric.mod.json", "fml.mod.json")
 
     val properties = mapOf(
-        "id" to modName,
-        "name" to modReadableName,
         "version" to modVersion
     )
 

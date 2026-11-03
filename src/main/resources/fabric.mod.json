@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "id": "${id}",
-  "name": "${name}",
+  "id": "font-loader",
+  "name": "Font Loader",
   "version": "${version}",
   "description": "This is an example description.",
   "authors": [
@@ -13,11 +13,14 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "org.example.ExampleMod"
+      {
+        "adapter": "kotlin",
+        "value": "dev.xueria.fontloader.UnnamedMod"
+      }
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "font-loader.mixins.json"
   ],
-  "accessWidener": "modid.accesswidener"
+  "accessWidener": "font-loader.accesswidener"
 }

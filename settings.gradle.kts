@@ -7,4 +7,4 @@ pluginManagement {
     }
 }
 
-rootProject.name = "fish-example-mod"
+rootProject.name = "font-loader"
